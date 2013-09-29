@@ -1,3 +1,9 @@
+;;; 4clojure.el --- Open and evaluate 4clojure.com questions
+
+;; Copyright (C) 2013  Joshua Hoff
+
+;;; Package-Requires: ((json "1.2") (request "0.2.0"))
+
 (require 'json)
 (require 'request)
 
@@ -156,3 +162,5 @@ buffer name"
                  (car result)
                  (cadr result))
       (message "%s" (cadr result)))))
+
+(provide '4clojure.el)
