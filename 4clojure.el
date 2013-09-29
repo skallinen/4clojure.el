@@ -79,17 +79,16 @@ header, a tip about how to check your answers, etc)"
  buffer"
   (string-match
    (replace-regexp-in-string
-    "[\s\n]\+"
-    "[\s\n]\+"
+    "__"
+    "\\(\\([\n\t\s]\\|.\\)\+\\)"
     (replace-regexp-in-string
-     "__"
-     "\\(.*\\)"
+     "[\s\n]\+"
+     "[\s\n]\+"
      (regexp-quote (4clojure/first-question-for-problem problem-number))
      nil t)
     nil t)
    (buffer-string))
   (match-string 1 (buffer-string)))
-
 
 (defun 4clojure/problem-number-of-current-buffer ()
   "Gets the problem number of the current buffer or 0 if current buffer isn't
