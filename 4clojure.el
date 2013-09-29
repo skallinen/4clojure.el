@@ -146,7 +146,8 @@ buffer name"
 (defun 4clojure-check-answers ()
   "Sends the first answer to 4clojure and gets a message back"
   (interactive)
-  (let* ((problem-number (4clojure/problem-number-of-current-buffer))
+  (let* ((problem-number-as-int (4clojure/problem-number-of-current-buffer))
+         (problem-number (int-to-string problem-number-as-int))
          (result (4clojure/check-answer
                   problem-number
                   (4clojure/get-answer-from-current-buffer problem-number))))
