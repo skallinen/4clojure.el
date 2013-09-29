@@ -1,0 +1,32 @@
+* 4clojure.el
+  Open and evaluate [[http://www.4clojure.com/][4clojure]] questions.
+** Install
+   Use `M-x package-install RET 4clojure.el RET` to install. Make sure you have
+   the [[http://melpa.milkbox.net/][MELPA]] package archive enabled in your init.el or .emacs.
+** Usage
+   1. To open a specific problem:
+    `M-x 4clojure-open-question RET 2` opens question 2.
+   2. To check your answers:
+    `M-x 4clojure-check-answers`
+   3. To open the next question (opens the first if you're not in a 4clojure buffer):
+    `M-x 4clojure-next-question`
+   4. To open the previous question (opens the first if you're not in a 4clojure buffer):
+    `M-x 4clojure-previous-question`
+** Helping out
+   If you want to help out, great! This is my first emacs plugin, so help is
+   much appreciated. Open an issue or check out the TODO list below for some
+   ideas on what might need updating/fixing.
+** TODO
+   - Sessions
+     - If you could log in/out then you could choose questions based on what you'd
+       already done.
+     - It'd also be good to be able to log out, in case you wanted to let
+       someone else use your already opened session
+   - More documentation
+     - It'd be nice to have some snippets in the README for things like:
+       - Opening an nREPL connection if not already opened when opening a
+         4clojure problem.
+   - Better descriptions and messages
+     - When the question descriptions and success/failure messages come back
+       from 4clojure.com some of them have HTML in them. It'd be great to either
+       remove the HTML, or use it to style the comments in emacs.
