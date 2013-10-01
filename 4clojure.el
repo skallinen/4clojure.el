@@ -111,7 +111,7 @@ header, a tip about how to check your answers, etc)"
   (string-match
    (replace-regexp-in-string
     "__"
-    "\\(\\([\n\t\s]\\|.\\)\+\\)"
+    "\\(\\(\n\\|.\\)\+\\)"
     (replace-regexp-in-string
      "[\s\n]\+"
      "[\s\n]\+"
