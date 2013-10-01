@@ -90,7 +90,8 @@ clobber existing text in the buffer (if the problem was already opened"
       (beginning-of-buffer)
       (search-forward "__")
       (backward-char 2)
-      (clojure-mode))))
+      (when (functionp 'clojure-mode)
+        (clojure-mode)))))
 
 (defun 4clojure/format-problem-for-buffer (problem-number description questions)
   "Formats a 4clojure question and description for an emacs buffer (adds a
