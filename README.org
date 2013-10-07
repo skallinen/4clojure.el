@@ -32,5 +32,8 @@
      - When the question descriptions and success/failure messages come back
        from 4clojure.com some of them have HTML in them. It'd be great to either
        remove the HTML, or use it to style the comments in emacs.
+     - When you mess up the first question and try to submit an answer it says
+       "empty input not allowed"; instead it should say "answer not found, did
+       you change the first question?" or something similar
 ** License
 Same as Emacs, see the file LICENSE for more info
