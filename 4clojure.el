@@ -76,24 +76,33 @@ these are called 'tests' on the site"
   (assoc-default 'description
                  (4clojure/get-question-cached problem-number)))
 
+(defun 4clojure/restrictions-for-problem (problem-number)
+  "Gets any restrictions for a problem (a list of functions you're not allowed
+to use); or nil if there are no restrictions"
+  (let ((restrictions (assoc-default 'restricted
+                        (4clojure/get-question-cached problem-number))))
+    (if (= 0 (length restrictions))
+        nil
+      restrictions)))
 
 (defun 4clojure/start-new-problem (problem-number)
   "Opens a new buffer with a 4clojure problem and description in it. Doesn't
 clobber existing text in the buffer (if the problem was already opened"
   (let ((buffer (get-buffer-create (format "*4clojure-problem-%s*" problem-number)))
         (questions (4clojure/questions-for-problem problem-number))
-        (description (4clojure/description-of-problem problem-number)))
+        (description (4clojure/description-of-problem problem-number))
+        (restrictions (4clojure/restrictions-for-problem problem-number)))
     (switch-to-buffer buffer)
     ; only add to empty buffers, thanks: http://stackoverflow.com/q/18312897
     (when (= 0 (buffer-size buffer))
-      (insert (4clojure/format-problem-for-buffer problem-number description questions))
+      (insert (4clojure/format-problem-for-buffer problem-number description questions restrictions))
       (beginning-of-buffer)
       (search-forward "__")
       (backward-char 2)
       (when (functionp 'clojure-mode)
         (clojure-mode)))))
 
-(defun 4clojure/format-problem-for-buffer (problem-number description questions)
+(defun 4clojure/format-problem-for-buffer (problem-number description questions &optional restrictions)
   "Formats a 4clojure question and description for an emacs buffer (adds a
 header, a tip about how to check your answers, etc)"
   (concat
@@ -101,7 +110,11 @@ header, a tip about how to check your answers, etc)"
    ";;\n"
    ";; Use M-x 4clojure-check-answers when you're done!\n"
    ";;\n"
-   ";; " description "\n\n"
+   ";; " (replace-regexp-in-string "\s*\n+\s*" "\n;;\n;; " description) "\n"
+   (when restrictions
+     (concat ";;\n;; Restrictions (please don't use these function(s)): "
+             (mapconcat 'identity restrictions ", ")
+             "\n\n"))
    (replace-regexp-in-string "" "" questions)))
 
 (defun 4clojure/get-answer-from-current-buffer (problem-number)
