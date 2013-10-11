@@ -14,6 +14,29 @@
     `M-x 4clojure-next-question`
    4. To open the previous question (opens the first if you're not in a 4clojure buffer):
     `M-x 4clojure-previous-question`
+** Tips and Tricks
+*** Start an nREPL connection when you open a question
+    If you want to try out your solutions before you submit them, you can run
+    them from emacs with nREPL. Make sure you have nrepl installed (`M-x
+    package-install nrepl`) and add the following to your .emacs or init.el:
+#+BEGIN_SRC emacs-lisp
+(require 'nrepl)
+
+(defadvice 4clojure-open-question (around 4clojure-open-question-around)
+  "Start an nREPL connection if one hasn't already been started when opening
+4clojure questions"
+  ad-do-it
+  (unless (nrepl-current-repl-buffer)
+    (nrepl-jack-in)))
+#+END_SRC
+
+    And if you don't want the REPL to open in a new window when it's ready
+    (because you can evaluate the Clojure code from the question with `C-x C-e`
+    or `C-x C-c`) you can add the following line after the `require`:
+#+BEGIN_SRC emacs-lisp
+(setq nrepl-pop-to-repl-buffer-on-connect nil)
+#+END_SRC
+
 ** Helping out
    If you want to help out, great! This is my first emacs plugin, so help is
    much appreciated. Open an issue or check out the TODO list below for some
@@ -24,10 +47,6 @@
        already done.
      - It'd also be good to be able to log out, in case you wanted to let
        someone else use your already opened session
-   - More documentation
-     - It'd be nice to have some snippets in the README for things like:
-       - Opening an nREPL connection if not already opened when opening a
-         4clojure problem.
    - Better descriptions and messages
      - When the question descriptions and success/failure messages come back
        from 4clojure.com some of them have HTML in them. It'd be great to either
