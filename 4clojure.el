@@ -108,13 +108,12 @@ header, a tip about how to check your answers, etc)"
   (concat
    ";; 4Clojure Question " problem-number "\n"
    ";;\n"
-   ";; Use M-x 4clojure-check-answers when you're done!\n"
-   ";;\n"
    ";; " (replace-regexp-in-string "\s*\n+\s*" "\n;;\n;; " description) "\n"
    (when restrictions
      (concat ";;\n;; Restrictions (please don't use these function(s)): "
              (mapconcat 'identity restrictions ", ")
-             "\n\n"))
+             "\n"))
+   ";;\n;; Use M-x 4clojure-check-answers when you're done!\n\n"
    (replace-regexp-in-string "" "" questions)))
 
 (defun 4clojure/get-answer-from-current-buffer (problem-number)
