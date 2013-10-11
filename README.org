@@ -32,7 +32,7 @@
 
     And if you don't want the REPL to open in a new window when it's ready
     (because you can evaluate the Clojure code from the question with `C-x C-e`
-    or `C-x C-c`) you can add the following line after the `require`:
+    or `C-c C-c`) you can add the following line after the `require`:
 #+BEGIN_SRC emacs-lisp
 (setq nrepl-pop-to-repl-buffer-on-connect nil)
 #+END_SRC
