@@ -87,7 +87,7 @@ to use); or nil if there are no restrictions"
 
 (defun 4clojure/start-new-problem (problem-number)
   "Opens a new buffer with a 4clojure problem and description in it. Doesn't
-clobber existing text in the buffer (if the problem was already opened"
+clobber existing text in the buffer (if the problem was already opened)."
   (let ((buffer (get-buffer-create (format "*4clojure-problem-%s*" problem-number)))
         (questions (4clojure/questions-for-problem problem-number))
         (description (4clojure/description-of-problem problem-number))
@@ -204,7 +204,6 @@ buffer name"
                  (car result)
                  (cadr result))
       (message "%s" (cadr result)))))
-
 
 (provide '4clojure)
 ;;; 4clojure.el ends here
