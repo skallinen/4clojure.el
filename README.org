@@ -31,20 +31,7 @@ opening 4clojure questions"
 #+END_SRC
 ** Helping out
    If you want to help out, great! This is my first emacs plugin, so help is
-   much appreciated. Open an issue or check out the TODO list below for some
-   ideas on what might need updating/fixing.
-** TODO
-   - Sessions
-     - If you could log in/out then you could choose questions based on what you'd
-       already done.
-     - It'd also be good to be able to log out, in case you wanted to let
-       someone else use your already opened session
-   - Better descriptions and messages
-     - When the question descriptions and success/failure messages come back
-       from 4clojure.com some of them have HTML in them. It'd be great to either
-       remove the HTML, or use it to style the comments in emacs.
-     - When you mess up the first question and try to submit an answer it says
-       "empty input not allowed"; instead it should say "answer not found, did
-       you change the first question?" or something similar
+   much appreciated. Open an issue or check out the [[https://github.com/joshuarh/4clojure.el/issues][existing issues list]] for
+   some ideas on what might need updating/fixing.
 ** License
 Same as Emacs, see the file LICENSE for more info
