@@ -1,24 +1,24 @@
 * 4clojure.el
   Open and evaluate [[http://www.4clojure.com/][4clojure]] questions.
 ** Install
-   Use `M-x package-install RET 4clojure` to install. Make sure you have
+   Use =M-x package-install RET 4clojure= to install. Make sure you have
    the [[http://melpa.milkbox.net/][MELPA]] package archive enabled in your init.el or .emacs and your package
-   contents are up to date (use `M-x package-refresh-contents` if you can't
+   contents are up to date (use =M-x package-refresh-contents= if you can't
    find the 4clojure package and you've added MELPA to your package archives.
 ** Usage
    1. To open a specific problem:
-    `M-x 4clojure-open-question RET 2` opens question 2.
+    =M-x 4clojure-open-question RET 2= opens question 2.
    2. To check your answers:
-    `M-x 4clojure-check-answers`
+    =M-x 4clojure-check-answers=
    3. To open the next question (opens the first if you're not in a 4clojure buffer):
-    `M-x 4clojure-next-question`
+    =M-x 4clojure-next-question=
    4. To open the previous question (opens the first if you're not in a 4clojure buffer):
-    `M-x 4clojure-previous-question`
+    =M-x 4clojure-previous-question=
 ** Tips and Tricks
 *** Start a cider/nREPL connection when you open a question
     If you want to try out your solutions before you submit them, you can run
-    them from emacs with cider. Make sure you have cider installed (`M-x
-    package-install cider`) and add the following to your .emacs or init.el:
+    them from emacs with cider. Make sure you have cider installed (=M-x
+    package-install cider=) and add the following to your .emacs or init.el:
 #+BEGIN_SRC emacs-lisp
 (require 'cider)
 
