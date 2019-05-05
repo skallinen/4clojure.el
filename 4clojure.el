@@ -205,5 +205,36 @@ buffer name"
                  (cadr result))
       (message "%s" (cadr result)))))
 
+
+(defun 4clojure-login (user pwd)
+  "Login to 4clojure"
+  (interactive "sWhat's your name? \nsAnd your password ")
+  (request
+   "http://www.4clojure.com/login"
+   :type "POST"
+   :sync t
+   :headers '(
+              ("User-Agent" . "Mozilla/5.0 (X11; Linux x86_64; rv:28.0) Gecko/20100101  Firefox/28.0")
+              ("Referer" . "http://www.4clojure.com/login")
+              )
+                                        ;   :Parser 'Buffer-String
+   :Data `(("User" . ,User) ("Pwd" . ,pwd))
+   :success (function*
+             (lambda (&key data &allow-other-keys)
+               data
+               )
+             )
+                                        ; when server send 302 header, `request` redirect request with original method POST, 
+                                        ; So 4clojure will not handle this redirect and given 404
+   :status-code '((404 . (lambda (&rest _) (message "login successful!"))))
+   )
+  )
+
+
+(defun 4clojure-open-random ()
+  "Opens a 4clojure problem in an aptly named buffer"
+  (interactive)
+  (4clojure/start-new-problem (number-to-string (random 158))))
+
+
 (provide '4clojure)
-;;; 4clojure.el ends here
